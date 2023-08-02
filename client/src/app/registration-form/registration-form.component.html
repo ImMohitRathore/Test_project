@@ -1,0 +1,29 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <h2>Registration</h2>
+  
+    <div class="form-group">
+      <label for="email">name</label>
+      <input type="text" id="name" formControlName="name" required>
+      <!-- <div *ngIf="registrationForm.controls.email.invalid && (registrationForm.controls.email.dirty || registrationForm.controls.email.touched)">
+        <div *ngIf="registrationForm.controls.email.errors.required">Email is required.</div>
+      </div> -->
+    </div>
+  
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" required>
+      <div *ngIf="registrationForm.get('email')?.errors?.['email']" class="error-message">
+        Please enter a valid email address.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" required>
+   
+    </div>
+  
+    <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+    <p>Already  have Account <span routerLink="/login">login</span></p>
+  </form>
+  
